@@ -1,0 +1,19 @@
+.App {
+  margin: 100px;
+  display:flex;
+}
+
+select {
+  width: 380px;
+  height: 240px;
+  font-size: 1.1rem;
+}
+#selectedOpts {
+  margin-top: 32px;
+}
+.searchField {
+  input {
+    width: 98%;
+    height: 26px;
+  }
+}
