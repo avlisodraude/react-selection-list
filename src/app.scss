@@ -6,6 +6,7 @@ select, input {
   font-size: 1.1rem;
 }
 select {
+  position: relative;
   width: 380px;
   height: 240px;
 }
@@ -14,41 +15,46 @@ select {
 }
 .searchField {
   input {
+    padding: 2px 10px;
+
     width: 94%;
-    height: 26px;
+    height: 24px;
   }
+
 }
 option {
   padding: 2px 10px;
-  height: 2.4rem;
+  height: 2.6rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  border-bottom: 1px solid #999;
 
   &:hover {
     background-color: rgba(153, 153, 153, 0.26);
   }
+  &.move-forward {
+    &:after {
+      color: #999;
+      font-family: fontAwesome;
+      font-size: 14px;
+      content: "\f04e";
+      position: absolute;
+      text-align: right;
+      right: 10px;
+    }
+  }
+  &.move-backward {
+    padding-left: 40px;
+    &:after {
+      color: #999;
+      font-family: fontAwesome;
+      font-size: 14px;
+      content: "\f04a";
+      position: absolute;
+      left: 10px;
+    }
+  }
 
-  &.fa-backward {
-    //padding-left: 30px;
-  }
+
 }
-input {
-  padding: 2px 10px;
-}
-.fa {
-  display: flex;
-  flex-direction: row;
-  &.fa-forward:before {
-    float: right;
-    color: #6d6565;
-    font-size: 12px;
-    padding-top: 5px;
-  }
-  &.fa-backward:before {
-    color: #6d6565;
-    font-size: 12px;
-    padding-top: 5px;
-    padding-right: 12px;
-  }
-}
+
