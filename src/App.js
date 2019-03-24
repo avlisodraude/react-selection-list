@@ -63,7 +63,7 @@ class ReactSelection extends Component {
                 selectedItems,
                 filteredCategories,
                 dataNormalized,
-                errMsg : false
+                errMsg: false
             })
         } else if (e.target.parentNode.id === 'selectedOpts') {
             selectedItems = this.removeFromObj(selectedItems, e.target.text);
@@ -74,7 +74,7 @@ class ReactSelection extends Component {
                 selectedItems,
                 dataNormalized,
                 filteredCategories,
-                errMsg : false
+                errMsg: false
             })
         }
     };
@@ -87,28 +87,30 @@ class ReactSelection extends Component {
         const newCategorySet = this.filterFields(this.state.dataNormalized, e.target.value);
         this.setState({
             filteredCategories: newCategorySet,
-            errMsg : false
-
+            errMsg: false
         })
     };
 
     submitForm = (e) => {
-        if(this.clusterName.current.value.length === 0 || this.state.selectedItems.length === 0) {
+        if (this.clusterName.current.value.length === 0 || this.state.selectedItems.length === 0) {
             this.setState({
-                errMsg : true
+                errMsg: true
             })
+        } else {
+            const selectedValues = this.state.selectedItems.map(item => item.value);
+            return {fields : selectedValues, label: this.clusterName.current.value, id: this.clusterName.current.value}
         }
         return false;
     };
 
     errorMsg = (msg) => {
-        return <div>{msg}</div>
+        return <div className="errMsg">{msg}</div>
     };
 
     render() {
         let errMsgName = null;
         let errMsgFields = null;
-        if(this.state.errMsg) {
+        if (this.state.errMsg) {
             errMsgName = this.clusterName.current.value.length === 0 ? this.errorMsg('Name field is required!') : null;
             errMsgFields = this.state.selectedItems.length === 0 ? this.errorMsg('No fields selected!') : null;
         }
